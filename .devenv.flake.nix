@@ -3,12 +3,12 @@
     let
       version = "1.0.8";
 system = "x86_64-linux";
-devenv_root = "/home/aaron/Sandbox/react-dashboard/workout-dashboard";
+devenv_root = "/home/aaron/ProdProjs/health-tracker/react-dashboard";
 devenv_dotfile = ./.devenv;
 devenv_dotfile_string = ".devenv";
 container_name = null;
 devenv_tmpdir = "/run/user/1000";
-devenv_runtime = "/run/user/1000/devenv-05fb69e";
+devenv_runtime = "/run/user/1000/devenv-8936a30";
 devenv_istesting = false;
 
         in {
@@ -24,12 +24,12 @@ devenv_istesting = false;
         let
           version = "1.0.8";
 system = "x86_64-linux";
-devenv_root = "/home/aaron/Sandbox/react-dashboard/workout-dashboard";
+devenv_root = "/home/aaron/ProdProjs/health-tracker/react-dashboard";
 devenv_dotfile = ./.devenv;
 devenv_dotfile_string = ".devenv";
 container_name = null;
 devenv_tmpdir = "/run/user/1000";
-devenv_runtime = "/run/user/1000/devenv-05fb69e";
+devenv_runtime = "/run/user/1000/devenv-8936a30";
 devenv_istesting = false;
 
             devenv =
