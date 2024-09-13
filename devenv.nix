@@ -23,9 +23,16 @@
     echo hello from $GREET
   '';
 
+  scripts.devservers.exec = ''
+    echo "Starting frontend and backend"
+    (cd frontend && npm run dev) &
+    (cd backend && node index.js ) &
+  '';
+
   enterShell = ''
     hello
     git --version
+    devservers
   '';
 
   # https://devenv.sh/tests/
