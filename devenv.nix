@@ -5,8 +5,16 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = with pkgs; [
+    sqlite
+    openssl
+  ];
 
+  env = {
+    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+    PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+    PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
+  };
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
   languages.javascript.enable = true;
@@ -21,6 +29,7 @@
   # https://devenv.sh/scripts/
   scripts.hello.exec = ''
     echo hello from $GREET
+    echo to run backend and frontend servers use "devservers" command
   '';
 
   scripts.devservers.exec = ''
@@ -32,7 +41,6 @@
   enterShell = ''
     hello
     git --version
-    devservers
   '';
 
   # https://devenv.sh/tests/
