@@ -160,11 +160,12 @@ const SignIn: React.FC = () => {
 
 
                 <div className="mb-5">
-                  <input
-                    type="submit"
-                    value="Sign In with Strava"
+                  <Link
+                    to="http://www.strava.com/oauth/authorize?client_id=53410&response_type=code&redirect_uri=http://localhost:3001/auth/callback&approval_prompt=force&scope=read" 
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
-                  />
+                  >
+                    Sign in with Strava
+                  </Link>
                 </div>
 
 
