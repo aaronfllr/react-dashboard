@@ -80,6 +80,10 @@ app.get('/', (_: Request, res: Response) => {
   res.sendFile('login.html', { root: viewsDir });
 });
 
+app.get('/tests', (_: Request, res: Response) => {
+  res.send('Hello World!');
+})
+
 // Redirect to login if not logged in.
 app.get('/users', (req: IReq, res: IRes) => {
   const jwt = req.signedCookies[EnvVars.CookieProps.Key];

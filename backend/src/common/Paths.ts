@@ -17,4 +17,8 @@ export default {
     Update: '/update',
     Delete: '/delete/:id',
   },
+  Tests: {
+    Base: '/tests',
+    Get: '/all',
+  }
 } as const;

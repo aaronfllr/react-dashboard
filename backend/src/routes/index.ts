@@ -5,7 +5,7 @@ import Paths from '@src/common/Paths';
 import adminMw from './middleware/adminMw';
 import AuthRoutes from './AuthRoutes';
 import UserRoutes from './UserRoutes';
-
+import TestRoutes from './TestRoutes';
 
 // **** Variables **** //
 
@@ -19,11 +19,15 @@ const authRouter = Router();
 // Routes
 authRouter.post(Paths.Auth.Login, AuthRoutes.login);
 authRouter.get(Paths.Auth.Logout, AuthRoutes.logout);
-
+apiRouter.use(Paths.Tests.Base, TestRoutes.getAll);
 // Add AuthRouter
 apiRouter.use(Paths.Auth.Base, authRouter);
 
 
+// router.get('/test', (req, res) => {
+//     res.send('Hello World!');
+// });
+// apiRouter.use('/test', router);
 // **** UserRouter **** //
 
 const userRouter = Router();
