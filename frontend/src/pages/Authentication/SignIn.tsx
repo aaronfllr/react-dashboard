@@ -161,7 +161,7 @@ const SignIn: React.FC = () => {
 
                 <div className="mb-5">
                   <Link
-                    to="http://www.strava.com/oauth/authorize?client_id=53410&response_type=code&redirect_uri=http://localhost:3001/auth/callback&approval_prompt=force&scope=read" 
+                    to="http://www.strava.com/oauth/authorize?client_id=53410&response_type=code&redirect_uri=http://localhost:3000/auth/strava/callback&approval_prompt=force&scope=activity:read_all&approval_prompt=force" 
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                   >
                     Sign in with Strava

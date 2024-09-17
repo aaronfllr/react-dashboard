@@ -1,13 +1,22 @@
-import './pre-start'; // Must be the first import
-import logger from 'jet-logger';
+import { PrismaClient } from '@prisma/client'
+import cors from 'cors'
+import express from 'express'
+import authRoutes from './routes/auth'
 
-import EnvVars from '@src/common/EnvVars';
-import server from './server';
+const prisma = new PrismaClient()
+const app = express()
+
+app.use(express.json())
+app.use(cors())
+
+app.use('/auth', authRoutes) 
+
+app.use('/', (req, res) => {
+  res.send('Hello World S!')
+})
 
 
-// **** Run **** //
 
-const SERVER_START_MSG = ('Express server started on port: ' + 
-  EnvVars.Port.toString());
-
-server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG));
+const server = app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000')
+})
