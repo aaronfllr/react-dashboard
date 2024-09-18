@@ -1,8 +1,11 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
+import dotenv from 'dotenv';
 
-const CLIENT_ID = process.env.STRAVA_CLIENT_ID as String;
-const CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET as String;
+dotenv.config();
+
+const CLIENT_ID = process.env.STRAVA_CLIENT_ID || '';
+const CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET || '';
 const REDIRECT_URI = 'localhost:5173';
 
 export const stravaCallback = async (req: Request, res: Response) => {
