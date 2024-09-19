@@ -38,6 +38,10 @@
     (cd backend && npm run dev ) &
   '';
 
+  scripts = {
+    prisma.exec = "npx prisma $@";
+  };
+
   enterShell = ''
     hello
     git --version
