@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
-import { PrismaClient } from '@prisma/client';
 import db from '../../db/db';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
 const CLIENT_ID = process.env.STRAVA_CLIENT_ID || '';
 const CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET || '';
+const JWT_SECRET = process.env.JWT_SECRET || '';
 const REDIRECT_URI = 'localhost:5173';
 
 ;
@@ -61,11 +62,16 @@ export const stravaCallback = async (req: Request, res: Response) => {
    },
   });
 
+    // Generate JWT with Strava Athlete ID
+    const jwtToken = jwt.sign(
+      { athlete: id, firstname, lastname},
+      JWT_SECRET,
+      { expiresIn: '1hr'}
+    );
+
     res.status(200).json({
       message: 'Successfully authenticated',
-      access_token,
-      refresh_token,
-      expires_at,
+      jwt: jwtToken,
     });
   } catch (error) {
     console.error('Error exchanging code for token:', error);
